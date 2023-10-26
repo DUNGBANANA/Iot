@@ -1,0 +1,21 @@
+.main-pages{
+    margin-top: 60px;
+    padding-left: 48px;
+    padding-top: 12px;
+    display: block;
+    margin-left: 66px;
+    // width: 1410px;
+    // height: 1000px;
+}
+
+@media (max-width: 768px) {
+    .main-pages{
+        margin-top: 60px;
+        padding: 20px;
+        padding-top: 12px;
+        display: block;
+        margin-left: 0px;
+        // width: 1410px;
+        // height: 1000px;
+    }
+}
