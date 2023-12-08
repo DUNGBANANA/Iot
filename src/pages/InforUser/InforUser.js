@@ -5,7 +5,7 @@ import "./main.scss";
 export default function InforUser() {
   return (
     <div>
-      <Header />
+      <Header list={false}/>
 
       <div className="profile-banner">
         <img
@@ -22,7 +22,7 @@ export default function InforUser() {
             />
           </div>
           <div className="profile_user_name">
-            <h5 className="style_user_name">Nguyễn Công Dũng</h5>
+            <h5 className="style_user_name">Admin1</h5>
           </div>
         </div>
     </div>

@@ -41,9 +41,9 @@ function DefaultLayout({ children }) {
 
   return (
     <div>
-      <Header getVisibile={getVisibile} />
+      <Header list={true}/>
       <div className="content">
-        {showDrawer && <Drawer />}
+        {/* {showDrawer && <Drawer />} */}
         <div className="main-pages">{children}</div>
       </div>
       <Footer />

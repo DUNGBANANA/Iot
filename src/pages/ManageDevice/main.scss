@@ -18,7 +18,12 @@
     top: 0;
     z-index: 1;
 }
-
+.wrap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
 .button-new-device{
     width: 140px;
     height: 40px;
@@ -46,11 +51,34 @@
     margin-bottom: 10px;
 }
 
+.ant-tabs-tab{
+    padding: 12px 12px!important;
+    border-color: black!important;
+    border-width: 0.2px!important;
+}
+.ant-tabs-tab-active{
+    background-color: #49cea1!important;
+    // border-radius: 15px;
+    color: black!important;
+}
+.ant-tabs-tab-btn {
+    color: black!important;
+}
+
 .search-filter-dash-header{
     margin-top: 20px;
     .search-filter-dash-header-count{
         font-weight: 600;
     }
+}
+
+.ant-tabs-nav-wrap{
+    justify-content: center;
+    align-items: center;
+}
+.ant-tabs-tab-btn{
+    font-size: 16px;
+    font-weight: 600;
 }
 
 @media (max-width:768px){

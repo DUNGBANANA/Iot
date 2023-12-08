@@ -1,42 +1,48 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+// App.js
+import React from "react";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import "./App.css";
+
 import { privateRoutes, publicRoutes } from "./routes";
+import { AuthProvider, useAuth } from "./features/AuthContext";
 
 function App() {
+  const dispatch = useDispatch();
+  // const { user } = useAuth();
+
   return (
     <BrowserRouter>
-      <Routes>
-        {publicRoutes.map((route, index) => {
-          const Page = route.component;
-          const Layout = route.layout;
-          return (
+      <AuthProvider> {/* Đảm bảo AuthProvider bao bọc toàn bộ ứng dụng */}
+        <Routes>
+          {publicRoutes.map((route, index) => (
             <Route
               key={index}
               path={route.path}
               element={
-                <Layout>
-                  <Page />
-                </Layout>
+                <route.layout>
+                  <route.component />
+                </route.layout>
               }
             />
-          );
-        })}
-        {privateRoutes.map((route, index) => {
-          const Page = route.component;
-          const Layout = route.layout;
-          return (
+          ))}
+          {privateRoutes.map((route, index) => (
             <Route
               key={index}
               path={route.path}
               element={
-                <Layout>
-                  <Page />
-                </Layout>
+                // user ? (
+                  <route.layout>
+                    <route.component />
+                  </route.layout>
+                // ) : (
+                //   <Navigate to="/" replace={true} />
+                // )
               }
             />
-          );
-        })}
-      </Routes>
+          ))}
+        </Routes>
+      </AuthProvider>
     </BrowserRouter>
   );
 }

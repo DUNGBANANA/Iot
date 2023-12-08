@@ -2,7 +2,7 @@ import React from "react";
 import './main.scss'
 import { Button, Form, Input } from "antd";
 import { Link } from "react-router-dom";
-
+// import { Spin } from 'antd';
 
 export default function FormLogin({ login, signUp, formValue }) {
   const onFinish = (values) => {
@@ -34,14 +34,14 @@ export default function FormLogin({ login, signUp, formValue }) {
 
       {signUp && (
         <>
-          <h6 className="login-title">Email</h6>
+          <h6 className="login-title">Tên đầy đủ</h6>
           <Form.Item
             name="mail"
             rules={[{ required: true, message: "Chưa nhập Email" }]}
           >
             <Input />
           </Form.Item>
-          <h6 className="login-title">Số điện thoại</h6>
+          {/* <h6 className="login-title">Số điện thoại</h6>
           <Form.Item
             name="phone"
             rules={[
@@ -49,7 +49,7 @@ export default function FormLogin({ login, signUp, formValue }) {
             ]}
           >
             <Input />
-          </Form.Item>
+          </Form.Item> */}
         </>
       )}
 

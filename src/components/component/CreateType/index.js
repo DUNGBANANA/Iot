@@ -8,6 +8,7 @@ import Row from "react-bootstrap/Row";
 
 // import useFetch from "../../../hook/usefetch";
 import axios from "axios";
+import { apiList } from "../../../api/api";
 
 export default function NewDevice({ show, handleClose }) {
 
@@ -17,7 +18,7 @@ export default function NewDevice({ show, handleClose }) {
   const [deviceName, setDeviceName] = useState("");
   const [type, setType] = useState(1);
   const [description, setDescription] = useState("");
-  const [location, setLocation] = useState("");
+//   const [location, setLocation] = useState("");
 
   const [validated, setValidated] = useState(false);
   const handleTypeChange = (e) => {
@@ -34,15 +35,15 @@ export default function NewDevice({ show, handleClose }) {
       setValidated(true);
     // }
     if(form.checkValidity() === true){
+      // console.log("DV===>", deviceName, "LC===>", location, "DES===>", description, "Type==> ", type);
       try {
         const res = await axios.post(
-          "http://1.55.212.49:8098/IoTPlatformCDIT_API/device/createDevice",
+          apiList.createTypeDevice ,
           {
             session_id: "fd55e244-695a-46e3-9f06-512eb21bdcd2",
-            device_name: deviceName,
-            location: location,
-            desc: description,
-            type: type,
+            type_name: deviceName,
+            type_id: description,
+            org_id: 1
           }
         );
         if (res.data.code === 200) {
@@ -60,17 +61,17 @@ export default function NewDevice({ show, handleClose }) {
     <>
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Thêm thiết bị mới</Modal.Title>
+        <Modal.Title>Thêm mới loại thiết bị</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <Row className="mb-3">
             <Form.Group as={Col} md="6" controlId="validationCustom01">
-              <Form.Label>Tên thiết bị</Form.Label>
+              <Form.Label>Tên loại thiết bị</Form.Label>
               <Form.Control
                 required
                 type="text"
-                placeholder="Tên thiết bị"
+                placeholder="Tên loại thiết bị"
                 defaultValue=""
                 onChange={(e) => setDeviceName(e.target.value)}
               />
@@ -81,7 +82,7 @@ export default function NewDevice({ show, handleClose }) {
 
             } */}
           </Row>
-          <Row className="mb-3">
+          {/* <Row className="mb-3">
             <Form.Group as={Col} md="6" controlId="validationCustom03">
               <Form.Label>Loại</Form.Label>
               <Form.Select onChange={handleTypeChange} value={type}>
@@ -94,20 +95,20 @@ export default function NewDevice({ show, handleClose }) {
                 Please provide a valid Function.
               </Form.Control.Feedback>
             </Form.Group>
-          </Row>
+          </Row> */}
           <Row className="mb-3">
             <Form.Group as={Col} md="6" controlId="validationCustom05">
-              <Form.Label>Mô tả</Form.Label>
+              <Form.Label>Mã loại thiết bị</Form.Label>
               <Form.Control
                 required
                 type="text"
-                placeholder="Mô tả"
+                placeholder="Type Id"
                 defaultValue=""
                 onChange={(e) => setDescription(e.target.value)}
               />
               <Form.Control.Feedback>Valid</Form.Control.Feedback>
             </Form.Group>
-            <Form.Group as={Col} md="5" controlId="validationCustom06">
+            {/* <Form.Group as={Col} md="5" controlId="validationCustom06">
               <Form.Label>Địa điểm</Form.Label>
               <Form.Control
                 required
@@ -117,7 +118,7 @@ export default function NewDevice({ show, handleClose }) {
                 onChange={(e) => setLocation(e.target.value)}
               />
               <Form.Control.Feedback>Valid</Form.Control.Feedback>
-            </Form.Group>
+            </Form.Group> */}
           </Row>
 
           <br />
@@ -131,7 +132,7 @@ export default function NewDevice({ show, handleClose }) {
               // marginRight: "auto",
             }}
           >
-            Thêm mới thiết bị
+            Thêm mới loại thiết bị
           </Button>
         </Form>
       </Modal.Body>

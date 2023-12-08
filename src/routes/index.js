@@ -17,11 +17,6 @@ const publicRoutes = [
 
 const privateRoutes = [
   {
-    path: paths.manageDevice,
-    component: pages.ManageDevice,
-    layout: Layouts.defaultLayout,
-  },
-  {
     path: paths.manageInfor,
     component: pages.ManageInfor,
     layout: Layouts.defaultLayout,
@@ -36,5 +31,25 @@ const privateRoutes = [
     component: pages.InforUser,
     layout: Layouts.layout,
   },
+  {
+    path: paths.listDevices,
+    component: pages.ListDevice,
+    layout: Layouts.defaultLayout,
+  },
+  {
+    path: paths.listDeviceOff,
+    component: pages.ListDeviceOff,
+    layout: Layouts.defaultLayout,
+  },
+  {
+    path: paths.listDeviceOn,
+    component: pages.ListDeviceOnline,
+    layout: Layouts.defaultLayout,
+  },
+  {
+    path: paths.listType,
+    component: pages.ListType,
+    layout: Layouts.defaultLayout,
+  }
 ];
 export { publicRoutes, privateRoutes };
